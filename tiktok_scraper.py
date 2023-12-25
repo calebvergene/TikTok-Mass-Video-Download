@@ -5,7 +5,6 @@ import requests
 from urllib.request import urlopen
 
 def downloadVideo(link, id):
-    print(f"Downloading video {id} from: {link}")
     cookies = {
         # Changes per tiktok page
     }
@@ -39,7 +38,6 @@ def downloadVideo(link, id):
             else:
                 break
 
-print("STEP 1: Open Chrome browser")
 options = Options()
 options.add_argument("start-maximized")
 options.add_argument("--disable-blink-features=AutomationControlled")
@@ -72,8 +70,7 @@ script += "return l;"
 
 urlsToDownload = driver.execute_script(script)
 
-print(f"STEP 3: Time to download {len(urlsToDownload)} videos")
 for index, url in enumerate(urlsToDownload):
-    print(f"Downloading video: {index}")
+    print(f"Downloading {index}")
     downloadVideo(url, index)
-    time.sleep(10)
+    time.sleep(20)
